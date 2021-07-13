@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   gazebo_ros
   roscpp
   std_msgs
+  gazebo_msgs
 )
 
 find_package (gazebo REQUIRED)
@@ -29,6 +30,9 @@ include_directories( ${catkin_INCLUDE_DIRS}
 )
 
 add_library(${PROJECT_NAME} src/gazebo_ros_vacuum_gripper.cpp)
-
+add_service_files(
+FILES
+PickupItem.srv
+)
 ## Specify libraries to link a library or executable target against
 target_link_libraries( ${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} )
